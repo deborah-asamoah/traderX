@@ -19,18 +19,21 @@ import finos.traderx.tradeprocessor.repository.*;
 @Service
 public class TradeService {
 	Logger log= LoggerFactory.getLogger(TradeService.class);
-	@Autowired
+
 	TradeRepository tradeRepository;
 
-	@Autowired
 	PositionRepository positionRepository;
 
-	
-    @Autowired 
     private Publisher<Trade> tradePublisher;
-    
-    @Autowired
+
     private Publisher<Position> positionPublisher;
+
+	public TradeService(TradeRepository tradeRepository, PositionRepository positionRepository, Publisher<Trade> tradePublisher, Publisher<Position> positionPublisher) {
+		this.tradeRepository = tradeRepository;
+		this.positionRepository = positionRepository;
+		this.tradePublisher = tradePublisher;
+		this.positionPublisher = positionPublisher;
+	}
     
 	public TradeBookingResult processTrade(TradeOrder order) {
 		log.info("Trade order received : "+order);
