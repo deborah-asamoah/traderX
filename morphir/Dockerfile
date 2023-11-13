@@ -1,4 +1,3 @@
-
 FROM node:18
 
 ARG VARIANT="17-bullseye"
@@ -8,7 +7,6 @@ WORKDIR /morphir
 COPY . .
 
 EXPOSE 18095
-
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y nodejs \
